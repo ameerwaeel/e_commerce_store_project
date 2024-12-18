@@ -1,0 +1,275 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+ {% comment %} <!DOCTYPE html>
+<html>
+
+<head>
+  <!-- Basic -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <!-- Mobile Metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <!-- Site Metas -->
+  <link rel="icon" href="{% static 'site_static/images/fevicon.png'%}" type="image/gif" />
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+
+  <title>Django</title>
+
+
+  <!-- bootstrap core css -->
+  <link rel="stylesheet" type="text/css"  href="{% static 'site_static/css/bootstrap.css'%}" />
+
+  <!-- fonts style -->
+  <link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet"> <!-- range slider -->
+
+  <!-- font awesome style -->
+  <link  href="{% static 'site_static/css/font-awesome.min.css'%}"  rel="stylesheet" />
+
+  <!-- Custom styles for this template -->
+  <link  href="{% static 'site_static/css/style.css'%}" rel="stylesheet" />
+  <!-- responsive style -->
+  <link  href="{% static 'site_static/css/responsive.css'%}"  rel="stylesheet" />
+
+</head>
+
+<body class="sub_page">
+
+  <div class="hero_area">
+    <!-- header section strats -->
+    <header class="header_section">
+      <div class="header_top">
+        <div class="container-fluid">
+          <div class="top_nav_container">
+            <div class="contact_nav">
+              <a href="">
+                <i class="fa fa-phone" aria-hidden="true"></i>
+                <span>
+                  Call : +01 123455678990
+                </span>
+              </a>
+              <a href="">
+                <i class="fa fa-envelope" aria-hidden="true"></i>
+                <span>
+                  Email : demo@gmail.com
+                </span>
+              </a>
+            </div>
+            <from class="search_form">
+              <input type="text" class="form-control" placeholder="Search here...">
+              <button class="" type="submit">
+                <i class="fa fa-search" aria-hidden="true"></i>
+              </button>
+            </from>
+            <div class="user_option_box">
+              <a href="" class="account-link">
+                <i class="fa fa-user" aria-hidden="true"></i>
+                <span>
+                  My Account
+                </span>
+              </a>
+              <a href="" class="cart-link">
+                <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                <span>
+                  Cart
+                </span>
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <div class="header_bottom">
+        <div class="container-fluid">
+          <nav class="navbar navbar-expand-lg custom_nav-container ">
+            <a class="navbar-brand" href="index.html">
+              <span>
+                Minics
+              </span>
+            </a>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class=""> </span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav ">
+                <li class="nav-item ">
+                  <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="about.html"> About</a>
+                </li>
+                <li class="nav-item active">
+                  <a class="nav-link" href="product.html">Products</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="why.html">Why Us</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="testimonial.html">Testimonial</a>
+                </li>
+              </ul>
+            </div>
+          </nav>
+        </div>
+      </div>
+    </header>
+    <!-- end header section -->
+  </div>
+ {% endcomment %}
+
+  <!-- product section -->
+{% block body %}
+
+  <section class="product_section layout_padding">
+    <div class="container">
+      <div class="heading_container heading_center">
+        <h2>
+          Our Products
+        </h2>
+      </div>
+      <div class="row" >
+        {% for product_list in product_list %}
+        {% comment %} {{product_list}} {% endcomment %}
+      <div class="col-sm-6 col-lg-4"       >
+                                       
+
+          <div class="box">
+            <div class="img-box">
+              
+              {% comment %} <img src="{% static 'site_static/images/p1.png'%}"alt=""> {% endcomment %}
+               {% if product_list.PRDImage %}
+              <img src="{{product_list.PRDImage.url}}"alt="">
+              {% else %}
+                            <img src="{% static 'site_static/images/default_img.png'%}"alt=""> 
+
+                            {% endif %}
+              <a href="" class="add_cart_btn">
+                <span>
+                  Add To Cart
+                </span>
+              </a>
+              
+            </div>
+            <div class="detail-box">
+              <div class="mb-3">
+
+                <!-- Sale new Badge -->
+                {% if product_list.PRDDiscountPrice > 0 %}
+                     <a class="btn btn-primary"style="background-color: #00c851; border-color: #00c851;" href="">
+                       {% comment %} <a class="btn btn-primary"style="background-color: rgb(144, 238, 144); border-color: green;" href=""> {% endcomment %}
+   
+                       <span class="badge blue mr-1">sale</span>
+                     </a>
+               {% endif %}
+               {% if product_list.PRDNew > 0 %}  
+   
+                 <a class="btn btn-primary"style="background-color: red; border-color: red;" href="">
+                   <span class="badge blue mr-1">new</span>
+                 </a>
+                 {% endif %}
+   
+                 {% if product_list.PRDBestseller > 0 %}
+   
+                 <a class="btn btn-primary"style="background-color: blue; border-color: blue;" href="">
+                   <span class="badge blue mr-1">bestseller</span>
+                 </a>
+                 {% endif %}
+   
+             </div>
+              <h5>
+          
+<a href="{{product_list.get_absolute_url}}">
+  {% comment %} <a href="{% url 'product:product_detail' product_list.PRDSlug %}">{% endcomment %}
+
+  {{product_list.PRDName}}
+
+</a>
+                 
+
+          
+              </h5>
+              <div class="product_info">
+                <h5>
+                  <span>$</span>   {{product_list.PRDPrice}}
+
+                </h5>
+                <div class="star_container">
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+   
+
+        {% endfor %}
+
+    
+    
+    <div class="pagination">
+        <span class="step-links">
+            {% if product_list.has_previous %}
+                <a href="?page=1">First</a>
+                <a href="?page={{ product_list.previous_page_number }}">Previous</a>
+            {% endif %}
+    
+            <span class="current">
+                Page {{ product_list.number }} of {{ product_list.paginator.num_pages }}.
+            </span>
+    
+            {% if product_list.has_next %}
+                <a href="?page={{ product_list.next_page_number }}">Next</a>
+                <a href="?page={{ product_list.paginator.num_pages }}">Last</a>
+            {% endif %}
+        </span>
+    </div>
+    
+        {% comment %} <div class="pagination">
+          {% for page_num in product_list.paginator.page_range %}
+              {% if page_num == page_obj.number %}
+                  <span class="current">{{ page_num }}</span>
+              {% else %}
+                  <a href="?page={{ page_num }}">{{ page_num }}</a>
+              {% endif %}
+          {% endfor %}
+      </div>\
+      
+      {% comment %} <div class="btn_box">
+        <a href="" class="view_more-link">
+          View More
+        </a>
+      </div> {% endcomment %}
+      
+  </div>
+</div>
+  </section>
+
+  <!-- end product section -->
+
+  {% endblock body %}
+  <!-- end info_section -->
+{% comment %} 
+
+
+
+
+  <!-- jQery -->
+  <script src="{% static 'site_static/site_static/js/jquery-3.4.1.min.js'%}" ></script>
+  <!-- bootstrap js -->
+  <script src="{% static 'site_static/site_static/js/bootstrap.js'%}" ></script>
+  <!-- custom js -->
+  <script src="{% static 'site_static/site_static/js/custom.js'%}" ></script>
+
+
+</body>
+
+</html> {% endcomment %}

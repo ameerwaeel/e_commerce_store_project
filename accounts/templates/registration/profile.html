@@ -1,0 +1,171 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+
+
+{% block body %}
+
+  <!-- product details section -->
+  <section class="product_details_section layout_padding">
+    <div class="container">
+      <div class="heading_container heading_center">
+        <h2>
+profile        </h2>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="img-box">
+
+
+            {% if profile.image %}
+                    <img src="{{profile.image.url}}" alt="Product Name" class="img-fluid">
+            {% else %}
+
+                      <img src="{% static 'site_static/images/user_img.png' %}" alt="Product Name" class="img-fluid"> 
+            {% endif %}
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="detail-box">
+            <div class="mb-3">
+
+
+           </div>
+            <h4>{{profile.uesr}}</h4>
+            <h4>{{profile.uesr.first_name}}-{{profile.uesr.last_name}}</h4>
+
+            <h4>{{profile.uesr.email}}</h4>
+
+            <h4>{{profile.country}}-{{profile.address}}</h4>
+
+
+    
+
+              </a>
+           <a class="btn btn-primary"style="background-color: blue; border-color: blue;" href="">
+                           <span class="badge blue mr-1">edit profile </span>
+                         </a> 
+          </div>
+        </div>
+       </div>
+                  
+               
+      <div class="row mt-5">
+        <div class="col-md-12">
+          <h4>Additional Information</h4>
+          <ul>
+            <li>Information about me.</li>
+            <li>Information about me.</li>
+            <li>Information about me.</li>
+            <li>Information about me.</li>
+          </ul>
+        </div>
+      
+        <div class="heading_container heading_center">
+            <h2>
+    my orders        </h2>
+          </div>
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">First</th>
+                <th scope="col">Last</th>
+                <th scope="col">Handle</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>Mark</td>
+                <td>Otto</td>
+                <td>@mdo</td>
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td>Jacob</td>
+                <td>Thornton</td>
+                <td>@fat</td>
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <td>Larry</td>
+                <td>the Bird</td>
+                <td>@twitter</td>
+              </tr>
+            </tbody>
+          </table>
+
+    </div>
+
+    </div>
+  </section> 
+  <!-- end product details section -->
+
+
+  {% endblock body %}
+
+
+
+{% comment %} {% block body %} {% endcomment %}
+{% comment %} <section class="product_details_section layout_padding">
+  <div class="container">
+    <div class="heading_container heading_center">
+      <h2>Product Details</h2>
+    </div>
+    <div class="row">
+      
+      <!-- Product Image -->
+      <div class="col-md-6">
+        <div class="img-box">
+          {% if product_detail.PRDImage %}
+            <img src="{{ product_detail.PRDImage.url }}" alt="{{ product_detail.PRDName }}" class="img-fluid">
+          {% else %}
+            <img src="{% static 'site_static/images/default_img.png' %}" alt="Default Image" class="img-fluid">
+          {% endif %}
+        </div>
+      </div>
+      
+      <!-- Product Details -->
+       
+      <div class="col-md-6">
+        <div class="detail-box">
+  
+    
+          <h4>{{ product_detail.PRDName }}</h4>
+          <h5>Category: {{ product_detail.PRDCategory }}</h5>
+          
+       
+          
+          <!-- Pricing -->
+          <div>
+            {% if product_detail.PRDDiscountPrice > 0 %}
+                    <h5>
+                      <span >$ {{ product_detail.PRDDiscountPrice }}</span>
+                      <del>$ {{ product_detail.PRDPrice }}</del>
+                    </h5>
+            {% else %}
+                    <h5>
+                      <span>$</span>{{ product_detail.PRDPrice }}
+                    </h5>
+            {% endif %}
+          </div>
+
+          <!-- Product Description -->
+          <p>{{ product_detail.PRDDescription }}</p>
+
+          <!-- Add to Cart Button -->
+          <div class="mt-3">
+            <a href="#" class="btn btn-primary">
+              Add to Cart
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section> {% endcomment %}
+{% comment %} 
+{% endblock body %} {% endcomment %}
+
